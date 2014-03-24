@@ -1,0 +1,42 @@
+luamote
+=======
+
+Wiiuse/WiiC library for lua
+
+This library requires the wiiuse source code and lua (I used 5.2).
+
+Just compile it along these two to a .so file, and then use the lua api to call the functions.
+
+Build
+=====
+
+Either download Wiiuse or wiiC (if you want wiiuse, just search/replace every "wiic" with "wiiuse" because all functions/constants starts with that prefix) and Lua (I use 5.2).
+
+Compile fuctions.c to an dynamic library along the two downloaded packages.
+
+import "wii.lua" in your lua script, and the created dynamic library should be visible to your script.
+
+Enjoy
+
+TODO
+====
+
+Currently only the wiimote is supported, it's due to lack of time :(
+I'll be working on extentions next, such as the nunchuk, Wiimotion plus, Classic controller, GH, and maybe the board.
+
+LÖVE
+====
+
+This part concerns using luamote with löve game engine
+
+In order to run the library correctly with your game, it will need to be run on its own thread.
+The thread will do one thing, update the wiimote status every time, to find if a button clicked, IR position changed, extention connected/disconnected, etc.
+
+And each time you want to check one of those event, we use two channels, the first Channel is used to give the thread the index of the wiimote we want to have (many wiimotes can be connected at the same time). And then according to that, it will pushes into the second channel the wiimote address. Once you have the address, you can create a new wiimote object using Wiimote:new(addr).
+
+We can't keep the wiimote index in our program, because in C it's all pointers, which means its address is subject to change. I'll make sure to confirm it once and for all.
+
+Have Fun
+========
+
+Have fun <3

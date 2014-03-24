@@ -1,10 +1,13 @@
-
 --[[
+Author:
+	
+	C. Soulaymen 
+		http://sora.eliteheberg.fr
+		soulaymenc@yahoo.com
 
-special thanks to 
+special thanks to:
 
 	katlogic: katlogic@katsystems.eu
-
 ]] 
 
 bit = require("bit")
